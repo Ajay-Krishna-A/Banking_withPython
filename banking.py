@@ -1,7 +1,6 @@
-import sys
 import random
 from datetime import datetime as dt
-from typing import TextIO
+
 
 logs = open("bankingLogs.txt", "a+")
 cred = open("credentials.txt", "a+")
