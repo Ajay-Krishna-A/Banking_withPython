@@ -1,6 +1,7 @@
-
+import sys
 import random
 from datetime import datetime as dt
+from typing import TextIO
 
 logs = open("bankingLogs.txt", "a+")
 cred = open("credentials.txt", "a+")
@@ -31,6 +32,7 @@ class Account:
         self.balance = int(balance)
         self.password = password
         self.cid = customer_id
+        self.operalog = open("operaLogs.txt", "r")
 
     def withdraw(self, withdraw_amount):
         if self.balance > int(withdraw_amount):
@@ -97,8 +99,11 @@ class Account:
             fprint("Your password does not match.")
 
     def view_statements(self):
-        statements = operalog.read().strip().split('\n')
+
+        statements = self.operalog.read().strip().split('\n')
+
         for statement in statements:
+
             if statement[0:4] == self.cid:
                 print(statement)
 
